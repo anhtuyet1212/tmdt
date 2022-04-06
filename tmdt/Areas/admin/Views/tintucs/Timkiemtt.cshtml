@@ -1,0 +1,93 @@
+﻿@model PagedList.IPagedList<tmdt.Models.tintuc>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Timkiemtt";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tìm kiếm</h2>
+<div>
+    <form class="form-inline" action="@Url.Action("Timkiemtt","tintucs")" method="post">
+        <div class="form-group">
+            <label for="exampleInputName2">Nhập thông tin</label>
+            <input type="text" class="form-control" name="keyword" id="exampleInputName2" placeholder="Nhập tin cần tìm">
+        </div>
+
+        <button style="margin-top:25px;" type="submit" class="btn btn-default">TÌM KIẾM</button>
+    </form>
+</div>
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+          Tiêu đề
+        </th>
+        <th>
+           Mô tả ngắn
+        </th>
+        <th>
+            Mô tả
+        </th>
+        <th>
+           Ngày đăng
+        </th>
+        <th>
+           Hình ảnh
+        </th>
+        <th>
+         Người đăng
+        </th>
+        <th>
+         Tiêu biểu
+        </th>
+        <th>
+         Loại tin
+        </th>
+        <th>
+           Tên
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tieude)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.matangan)
+        </td>
+        <td>
+            @Html.Raw(@item.mota)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngaydang)
+        </td>
+        <td>
+            <img src="@item.anh" width="100" height="100" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nguoidang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tieubieu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.loaitin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.chuyenmuc.ten)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ma }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ma }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ma })
+        </td>*@
+    </tr>
+}
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions() { HttpMethod = "Get", UpdateTargetId = "sp_area" }))

@@ -1,0 +1,41 @@
+﻿@using tmdt.Models;
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết Thanh toán</h2>
+<div class="form-group">
+    <label>
+        Tên khách hàng
+    </label>
+    <input name="mobile" class="form-control" />
+</div>
+    <div class="form-group">
+        <label>
+            Người Nhận
+        </label>
+        <input   name="shipname" class="form-control"/>
+        </div>
+<div class="form-group">
+    <label>
+        Điện thoại
+    </label>
+    <input name="mobile" class="form-control" />
+</div>
+<div class="form-group">
+    <label>
+        Địa chỉ
+    </label>
+    <input name="address" class="form-control" />
+</div>
+<div class="form-group">
+    <label>
+        Email
+    </label>
+    <input name="mail" class="form-control" />
+</div>
+<a href="@Url.Action("Sucess","Giohangs")">Gửi đơn hàng</a>
+@*<button  type="submit" class="btn-success">Gửi đơn hàng</button>*@
+    
+

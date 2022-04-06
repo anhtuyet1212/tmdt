@@ -1,0 +1,75 @@
+﻿@using tmdt.Models;
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="header__logo">
+                <a href="./index.html"><img src="~/LIB/img/logo20.png" alt=""></a>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <nav class="header__menu">
+                <ul>
+                    <li class="active"><a href="@Url.Action("Index","Home")">Trang chủ</a></li>
+                    <li><a href="">Giới thiệu</a></li>
+                    <li>
+                        <a href="#">Sản phẩm</a>
+                        <ul class="header__menu__dropdown">
+                            <li><a href="@Url.Action("search","TimkiemSP")">Samsung</a></li>
+                            <li><a href="@Url.Action("search","TimkiemSP")">Iphone</a></li>
+                            <li><a href="@Url.Action("search","TimkiemSP")">Xiami</a></li>
+                            <li><a href="@Url.Action("search","TimkiemSP")">Oppo</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Máy tính</a>
+                        <ul class="header__menu__dropdown">
+                            <li><a href="./shop-details.html">Dell</a></li>
+                            <li><a href="./shoping-cart.html">Asus</a></li>
+                            <li><a href="./checkout.html">Acer</a></li>
+                            <li><a href="./blog-details.html">Hp</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="@Url.Action("_Blog","Tintuc")">Tin tức</a></li>
+                    <li><a href="@Url.Action("lienhe000","lienhe001")">Liên hệ</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-lg-3">
+            <div class="header__cart">
+                @{
+                    List<GioHang> dsgh = (List<GioHang>)Session["dsgh"];
+                }
+                <ul>
+                    <li><a href="#"><i class="fa fa-heart"></i> <span>99</span></a></li>
+                    @if (dsgh != null)
+                    {
+                        <li><a href="@Url.Action("XemGioHang","GioHangs")"><i class="fa fa-shopping-bag"></i> <span>@dsgh.Count</span></a></li>
+                    }
+                    else
+                    {
+                        <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>0</span></a></li>
+                    }
+                   
+                </ul>
+               
+                @if (dsgh != null)
+                {
+                    var tongtien = 0.0;
+                    foreach (var item in dsgh)
+                    {
+                        tongtien = tongtien + (double)item.Spham.gia * item.SoLuong;
+                    }
+                    <div class="header__cart__price">Giỏ hàng: <span>@Convert.ToDecimal(tongtien).ToString("##,#") VNĐ</span></div>
+                }
+                else
+                {
+                    <div class="header__cart__price">Giỏ hàng: <span>0 Đồng</span></div>
+                }
+                
+            </div>
+        </div>
+    </div>
+    <div class="humberger__open">
+        <i class="fa fa-bars"></i>
+    </div>
+</div>

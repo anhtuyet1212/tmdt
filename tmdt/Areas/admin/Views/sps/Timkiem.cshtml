@@ -1,0 +1,88 @@
+﻿@model PagedList.IPagedList<tmdt.Models.sp>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Timkiem";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tìm kiếm thông tin về sản phẩm</h2>
+
+<div>
+    <form class="form-inline" action="@Url.Action("Timkiem","sps")" method="post">
+        <div class="form-group">
+            <label for="exampleInputName2">Nhập thông tin</label>
+            <input type="text" class="form-control" name="keyword" id="exampleInputName2" placeholder="Nhập tên sản phẩm">
+        </div>
+
+        <button style="margin-top:25px;" type="submit" class="btn btn-default">TÌM KIẾM</button>
+    </form>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+            Ảnh
+        </th>
+        <th>
+            Tiêu biểu
+        </th>
+        <th>
+            Trạng thái
+        </th>
+        <th>
+            Giá sản phẩm
+        </th>
+        <th>
+            Đơn vị tính
+        </th>
+        <th>Chức năng</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.ten
+            </td>
+            <td>
+                <img src="@item.anhnho" width="100" height="100" />
+            </td>
+
+            <td>
+                @if (item.tieubieu == true)
+                {
+                    <span>Tiêu biểu</span>
+                }
+                else
+                {
+                    <span>Không</span>
+                }
+            </td>
+            <td>
+                @if (item.trangthai == true)
+                {
+                    <span>Hoạt động</span>
+                }
+                else
+                {
+                    <span>Không hoạt động</span>
+                }
+            </td>
+            <td>
+                @Convert.ToDecimal(item.gia).ToString("##.#")
+            </td>
+            <td>
+                @item.dvt
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.ma }) |
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.ma }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.ma })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions() { HttpMethod = "Get", UpdateTargetId = "sp_area" }))

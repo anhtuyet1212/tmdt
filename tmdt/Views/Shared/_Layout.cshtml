@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Bán các loại sản phẩm về điện thoại">
+        <meta name="keywords" content="Điện thoại, iphone, điện thoại samsung, máy tính bảng, thẻ sim">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>@ViewBag.Title - WEB Bán Điện Thoại</title>
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
+
+        <!-- Css Styles -->
+        <link rel="stylesheet" href="~/LIB/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="~/LIB/css/font-awesome.min.css" type="text/css">
+        <link rel="stylesheet" href="~/LIB/css/elegant-icons.css" type="text/css">
+        <link rel="stylesheet" href="~/LIB/css/nice-select.css" type="text/css">
+        <link rel="stylesheet" href="~/LIB/css/jquery-ui.min.css" type="text/css">
+        <link rel="stylesheet" href="~/LIB/css/owl.carousel.min.css" type="text/css">
+        <link rel="stylesheet" href="~/LIB/css/slicknav.min.css" type="text/css">
+        <link rel="stylesheet" href="~/LIB/css/style.css" type="text/css">
+    </head>
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    <header class="header">
+        <!--top website-->
+        <div class="header__top">
+            @Html.Partial("_headerTop")
+            </div>
+        <!--Logo và menu-->
+        <div id="topmenu"
+             @Html.Partial("_TopMenu")
+             </div>
+</header>
+    <!--Danh mục sản phẩm-->
+    <section class="hero"
+             @Html.Partial("_DanhMuc")
+             </section>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <!--Chân trang-->
+        <footer class="footer spad">
+
+            @Html.Partial("_Chantrang")
+
+        </footer>
+    </div>
+    <!-- Js Plugins -->
+    <script src="~/LIB/js/jquery-3.3.1.min.js"></script>
+    <script src="~/LIB/js/bootstrap.min.js"></script>
+    <script src="~/LIB/js/jquery.nice-select.min.js"></script>
+    <script src="~/LIB/js/jquery-ui.min.js"></script>
+    <script src="~/LIB/js/jquery.slicknav.js"></script>
+    <script src="~/LIB/js/mixitup.min.js"></script>
+    <script src="~/LIB/js/owl.carousel.min.js"></script>
+    <script src="~/LIB/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+﻿@using tmdt.Models;
+@{
+    List<tintuc> tin = (List<tintuc>)ViewBag.tin;
+}
+@{
+    ViewBag.Title = "_Chitiettintuc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="blog-details-hero set-bg" data-setbg="/LIB/img/blog/tintuc2.jpeg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="blog__details__hero__text">
+                    <h2>@Model.ma</h2>
+                    <ul>
+                        <li>@Model.nguoidang</li>
+                        <li>@Model.ngaydang</li>
+                        <li>8 Comments</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="blog-details spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-5 order-md-1 order-2">
+                <div class="blog__sidebar">
+                    <div class="blog__sidebar__search">
+                        <form action="#">
+                            <input type="text" placeholder="Tìm kiếm .... ">
+                            <button type="submit"><span class="icon_search"></span></button>
+                        </form>
+                    </div>
+
+                    <div class="blog__sidebar__item">
+                        <h4>Tin tức</h4>
+                        <ul>
+                            <li><a href="@Url.Action("_Blog","Tintuc")">Tất cả</a></li>
+                            <li><a href="#">Tin hay</a></li>
+                            <li><a href="#">Sản phẩm</a></li>
+                            <li><a href="#">Cách sống</a></li>
+                            <li><a href="#">Du lịch</a></li>
+                        </ul>
+                    </div>
+                    <div class="blog__sidebar__item">
+                        <h4>Tin tức gần đây</h4>
+                        <div class="blog__sidebar__recent">
+                            <a href="#" class="blog__sidebar__recent__item">
+                                <div class="blog__sidebar__recent__item__pic">
+                                    <img src="@Model.anh" alt="">
+                                </div>
+                                <div class="blog__sidebar__recent__item__text">
+                                    <h6>
+                                        @foreach (var item in tin)
+                                    {
+                                        <h5><a style="font-size:20px" href="@Url.Action("_Chitiettin","TinTuc",new {ma=item.ma})">@item.tieude</a></h5>
+                                    }
+                                </h6>
+                                <span>@Model.ngaydang</span>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-7 order-md-1 order-1">
+                <div class="blog__details__text">
+                    <img src="@Model.anh" alt="">
+                    <p>
+                      
+                    </p>
+                    <h3>
+                        @Model.tieude
+                    </h3>
+                    <p>
+                       @Html.Raw(Model.mota)
+                    </p>
+                </div>
+                <div class="blog__details__content">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="blog__details__author">
+                                <div class="blog__details__author__pic">
+                                    <img src="@Model.anh" alt="">
+                                </div>
+                                <div class="blog__details__author__text">
+                                    <h6>@Model.ngaydang</h6>
+                                    <span>@Model.nguoidang</span>
+                                </div>
+                            </div>
+                        </div>                      
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="blog__details__widget">
+                        <ul>
+                            <li><span>Loại tin</span> @Model.loaitin</li>
+                            <li><span>Tác giả:</span> @Model.nguoidang</li>
+                        </ul>
+                        <div class="blog__details__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

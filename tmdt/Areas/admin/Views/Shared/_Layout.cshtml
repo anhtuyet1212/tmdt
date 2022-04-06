@@ -1,0 +1,109 @@
+﻿@using tmdt.Models;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    @*<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>*@
+    <script src="~/Areas/admin/Content/ckeditor/ckeditor.js"></script>
+    <script src="~/Areas/admin/Content/ckfinder/ckfinder.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="@Url.Action("Index","Default")">Trang chủ <span class="sr-only">(current)</span></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quản lý sản phẩm <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Index","sps")">Danh sách sản phẩm</a></li>
+                            <li><a href="@Url.Action("Create","sps")">Thêm sản phẩm mới</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="@Url.Action("Index","loaisps")">Danh sách loại sản phẩm</a></li>
+                            <li><a href="@Url.Action("Create","loaisps")">Thêm loại sản phẩm mới</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Quản lý tin tức <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Index","tintucs")">Danh sách tin</a></li>
+                            <li><a href="@Url.Action("Create","tintucs")">Thêm tin mới</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="@Url.Action("Index","chuyenmucs")">Danh sách chuyên mục</a></li>
+                            <li><a href="@Url.Action("Create","chuyenmucs")">Thêm chuyên mục</a></li>
+                        </ul>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quản lý đơn hàng<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Danh sách đơn hàng mới</a></li>
+                            <li><a href="#">Danh sách đơn hàng đã duyệt</a></li>
+                            <li class="divider"></li>
+                             <li><a href="@Url.Action("Index","khachhangs1")">Danh sách khách hàng</a></li>
+                            <li><a href="@Url.Action("Index","nguoidungs")">Người dùng</a></li>
+                            @*<li><a href="#">Thêm loại sản phẩm</a></li>*@
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tìm kiếm<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+
+
+                            @*<li><a href="#">Something else here</a></li>*@
+                            <li role="separator" class="divider"></li>
+                            <li><a href="@Url.Action("Timkiem","sps")">Tìm kiếm sản phẩm</a></li>
+                            <li><a href="@Url.Action("Timkiemtt","tintucs")">Tìm kiếm tin tức</a></li>
+                            <li><a href="@Url.Action("Timkiemchuyenmuc","chuyenmucs")">Tìm kiếm chuyên mục</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @*<li><a href="#">Link</a></li>*@
+                    @{ 
+                        nguoidung nd = (nguoidung)Session["nd"];
+                        if(nd==null)
+                        {
+                            HttpContext.Current.Response.Redirect(Url.Action("Login","Default"));
+                        }
+
+                    }
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="@nd.anh" width="25" height="25" /><span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Thông tin user</a></li>
+                            <li><a href="#">Thay đổi mật khẩu</a></li>
+                            @*<li><a href="#">Something else here</a></li>*@
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Thoát</a></li>
+                        </ul>
+                    </li>
+                   
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,55 @@
+﻿@using tmdt.Models;
+@{
+    csdlbh db = new csdlbh();
+    var dsloai = db.loaisps.ToList();
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="hero__categories">
+                <div class="hero__categories__all">
+                    <i class="fa fa-bars"></i>
+                    <span>Danh mục</span>
+                </div>
+                <ul>
+                   @foreach (var item in dsloai)
+                   {
+                    <li><a href="#">@item.ten</a></li>
+                   }
+                </ul>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div class="hero__search">
+                <div class="hero__search__form">
+                    <form action="@Url.Action("search","TimkiemSP")" method="post">
+                        <div class="hero__search__categories">
+                          Tất cả
+                            <span  class="arrow_carrot-down"></span>                      
+                        </div>
+                    @*@Html.TextBox("txttimkiem","",htmlAttributes:new { @class="TextBoxTimKiem", @placeholder = "Bạn muốn tìm sản phẩm gì ?" })*@
+                        <input type="text" name="keyword" placeholder="Bạn muốn tìm sản phẩm gì ?">
+                        <button type="submit" class="site-btn">Tìm kiếm</button>
+                    </form>
+                </div>
+                <div class="hero__search__phone">
+                    <div class="hero__search__phone__icon">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <div class="hero__search__phone__text">
+                        <h5>+84 39 7574 623</h5>
+                        <span>Hỗ trợ</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__item set-bg" data-setbg="/LIB/img/hero/background3.gif">
+                <div class="hero__text">
+                    <span style="color:black" >Điện thọai</span>
+                    <h2 style="color:black">Sản phẩm <br />100% Chính hãng</h2>
+                    <p style="color:black">Miễn phí vận chuyển</p>
+                    <a href="#" class="primary-btn">Đến Shop ngay</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,152 @@
+﻿@model tmdt.Models.sp
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Xóa</h2>
+
+<h3>Bạn có chắc chắn muốn xóa không ?</h3>
+<div>   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ten)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mota)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.anhnho)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.anhnho)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.anh1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.anh1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.anh2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.anh2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.anh3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.anh3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tskt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tskt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tieubieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tieubieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trangthai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trangthai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.xoa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.xoa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.hang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.khuyenmai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.khuyenmai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngaydang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngaydang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dvt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dvt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.loaisp.ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loaisp.ten)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Quay lại", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,45 @@
+﻿@using tmdt.Models;
+@{
+    var dstintuc = (List<tintuc>)ViewBag.dstintuc;
+
+}
+
+@{
+    ViewBag.Title = "XemGioHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="col-lg-8 col-md-7">
+
+    <div class="row">
+        @foreach (var item in dstintuc)
+        {
+
+
+            <div class="col-lg-6 col-md-6 col-sm-6 @item.tieude">
+                <div class="blog__item">
+                    <div class="blog__item__pic">
+                        <img src="@item.anh" width="90" alt="">
+                    </div>
+                    <div class="blog__item__text">
+                        <ul>
+                            <li><i class="fa fa-calendar-o"></i> @item.ngaydang</li>
+                            @*<li><i class="fa fa-comment-o"></i> 5</li>*@
+                        </ul>
+                        <h5><a href="@Url.Action("_Chitiettintuc","Tintuc", new {ma=item.ma })">@item.tieude</a></h5>
+                        <p>
+                            @item.matangan
+                        </p>
+                        <a href="@Url.Action("_Chitiettintuc","Tintuc", new {ma=item.ma })">READ MORE <span class="arrow_right"></span></a>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+
+
+    </div>
+</div>

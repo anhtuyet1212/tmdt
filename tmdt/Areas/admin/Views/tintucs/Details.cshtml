@@ -1,0 +1,91 @@
+﻿@model tmdt.Models.tintuc
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết sản phẩm</h2>
+
+<div>
+    @*<h4>tintuc</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tieude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tieude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.matangan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.matangan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mota)
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.mota)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngaydang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngaydang)
+        </dd>
+
+        <dt>
+            <img src="@Model.anh" width="200" height="200">
+        </dt>
+
+        @*<dd>
+            <img src="@Model.anh" width="200" height="200">
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nguoidang)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nguoidang)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tieubieu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tieubieu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.loaitin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loaitin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.chuyenmuc.ten)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.chuyenmuc.ten)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.ma }) |
+    @Html.ActionLink("Quay lại", "Index")
+</p>

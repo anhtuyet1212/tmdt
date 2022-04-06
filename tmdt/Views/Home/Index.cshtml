@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Trang chủ";
+}
+<section class="categories">
+    @Html.Action("_Slide","Home")
+    </section>
+<section class="featured spad">
+    @Html.Action("_Product","Sanpham")
+         </section>
+<div class="banner">
+    @Html.Action("_Banner2", "Banner2")
+</div>
+<section class="latest-product spad">
+    @Html.Action("_Sanpham2", "Sanpham2")
+</section>
+<section class="from-blog spad">
+    @Html.Action("_Blog","Tintuc")
+    </section>
+@*<section class="contact spad">
+    @Html.Action("_lienhe", "lienhe")
+    </section>*@

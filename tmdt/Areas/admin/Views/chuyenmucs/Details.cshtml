@@ -1,0 +1,43 @@
+﻿@model tmdt.Models.chuyenmuc
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Details</h2>*@
+
+<div>
+    <h4>Chuyên mục</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Tên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ten)
+        </dd>
+
+        <dt>
+        Mô tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mota)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.mact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mact)
+        </dd>*@
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.ma }) |
+    @Html.ActionLink("Quay lại", "Index")
+</p>

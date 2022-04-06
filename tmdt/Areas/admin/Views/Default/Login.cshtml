@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/stylelogin.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+    <div id="login">
+        <h3 style="" class="text-center text-white pt-5">ĐĂNG NHẬP HỆ THỐNG</h3>
+       
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" action="@Url.Action("Login","Default")" method="post">
+                            <h3 class="text-center text-info">ĐĂNG NHẬP</h3>                         
+                             @if (ViewBag.ms != null)
+                            {
+                                <p style="text-align:center">
+                                    
+                                    @ViewBag.ms
+                                </p>
+                            }
+                            <div class="form-group">
+                                <label for="username" class="text-info">TÀI KHOẢN:</label><br>
+                                <input type="text" name="txtTen" id="username" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="text-info">MẬT KHẨU:</label><br>
+                                <input type="text" name="txtMk" id="password" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="remember-me" class="text-info"><span>Nhớ mật khẩu</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br>
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="Đăng Nhập">
+                            </div>
+                            <div id="register-link" class="text-right">
+                                <a  href="#" class="text-info">Đăng ký tại đây</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

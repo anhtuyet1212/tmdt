@@ -1,0 +1,597 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLBH123Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cauhinh">
+          <Key>
+            <PropertyRef Name="ma" />
+          </Key>
+          <Property Name="ma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="noidung" Type="ntext" />
+          <Property Name="ngaytao" Type="date" />
+        </EntityType>
+        <EntityType Name="chitietdh">
+          <Key>
+            <PropertyRef Name="madh" />
+            <PropertyRef Name="masp" />
+          </Key>
+          <Property Name="madh" Type="int" Nullable="false" />
+          <Property Name="masp" Type="int" Nullable="false" />
+          <Property Name="soluong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dongia" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="chuyenmuc">
+          <Key>
+            <PropertyRef Name="ma" />
+          </Key>
+          <Property Name="ma" Type="int" Nullable="false" />
+          <Property Name="ten" Type="nvarchar" MaxLength="500" />
+          <Property Name="mota" Type="nvarchar" MaxLength="500" />
+          <Property Name="mact" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="donhang">
+          <Key>
+            <PropertyRef Name="ma" />
+          </Key>
+          <Property Name="ma" Type="int" Nullable="false" />
+          <Property Name="makh" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ngaydat" Type="date" />
+          <Property Name="ngaygiao" Type="date" />
+          <Property Name="phigiao" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="tennguoinhan" Type="nvarchar" MaxLength="50" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="dienthoai" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="500" />
+          <Property Name="trangthai" Type="bit" />
+        </EntityType>
+        <EntityType Name="khachhang">
+          <Key>
+            <PropertyRef Name="ma" />
+          </Key>
+          <Property Name="ma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ten" Type="nvarchar" MaxLength="100" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="500" />
+          <Property Name="dienthoai" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="password" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="loaisp">
+          <Key>
+            <PropertyRef Name="ma" />
+          </Key>
+          <Property Name="ma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ten" Type="nvarchar" MaxLength="500" />
+          <Property Name="mota" Type="ntext" />
+        </EntityType>
+        <EntityType Name="nguoidung">
+          <Key>
+            <PropertyRef Name="ma" />
+          </Key>
+          <Property Name="ma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ten" Type="nvarchar" MaxLength="50" />
+          <Property Name="gioitinh" Type="bit" />
+          <Property Name="diachi" Type="nvarchar" MaxLength="500" />
+          <Property Name="dienthoai" Type="varchar" MaxLength="16" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+          <Property Name="tendangnhap" Type="nvarchar" MaxLength="50" />
+          <Property Name="matkhau" Type="nvarchar" MaxLength="500" />
+          <Property Name="anh" Type="nvarchar" MaxLength="500" />
+          <Property Name="quyen" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="sp">
+          <Key>
+            <PropertyRef Name="ma" />
+          </Key>
+          <Property Name="ma" Type="int" Nullable="false" />
+          <Property Name="ten" Type="nvarchar" MaxLength="500" />
+          <Property Name="mota" Type="nvarchar" MaxLength="500" />
+          <Property Name="maloai" Type="int" Nullable="false" />
+          <Property Name="anhnho" Type="nvarchar" MaxLength="500" />
+          <Property Name="anh1" Type="nvarchar" MaxLength="500" />
+          <Property Name="anh2" Type="nvarchar" MaxLength="500" />
+          <Property Name="anh3" Type="nvarchar" MaxLength="500" />
+          <Property Name="tskt" Type="ntext" />
+          <Property Name="tieubieu" Type="bit" />
+          <Property Name="trangthai" Type="bit" />
+          <Property Name="xoa" Type="bit" />
+          <Property Name="hang" Type="nvarchar" MaxLength="500" />
+          <Property Name="gia" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="khuyenmai" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ngaydang" Type="date" />
+          <Property Name="dvt" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tintuc">
+          <Key>
+            <PropertyRef Name="ma" />
+          </Key>
+          <Property Name="ma" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tieude" Type="nvarchar" MaxLength="500" />
+          <Property Name="macm" Type="int" Nullable="false" />
+          <Property Name="matangan" Type="nvarchar" MaxLength="500" />
+          <Property Name="mota" Type="ntext" />
+          <Property Name="ngaydang" Type="date" />
+          <Property Name="anh" Type="nvarchar" MaxLength="500" />
+          <Property Name="nguoidang" Type="nvarchar" MaxLength="100" />
+          <Property Name="tieubieu" Type="bit" />
+          <Property Name="loaitin" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_chitietdh_donhang">
+          <End Role="donhang" Type="Self.donhang" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="chitietdh" Type="Self.chitietdh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="donhang">
+              <PropertyRef Name="ma" />
+            </Principal>
+            <Dependent Role="chitietdh">
+              <PropertyRef Name="madh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_chitietdh_sp">
+          <End Role="sp" Type="Self.sp" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="chitietdh" Type="Self.chitietdh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sp">
+              <PropertyRef Name="ma" />
+            </Principal>
+            <Dependent Role="chitietdh">
+              <PropertyRef Name="masp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_donhang_khachhang">
+          <End Role="khachhang" Type="Self.khachhang" Multiplicity="1" />
+          <End Role="donhang" Type="Self.donhang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="khachhang">
+              <PropertyRef Name="ma" />
+            </Principal>
+            <Dependent Role="donhang">
+              <PropertyRef Name="makh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sp_loaisp">
+          <End Role="loaisp" Type="Self.loaisp" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sp" Type="Self.sp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loaisp">
+              <PropertyRef Name="ma" />
+            </Principal>
+            <Dependent Role="sp">
+              <PropertyRef Name="maloai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tintuc_chuyenmuc">
+          <End Role="chuyenmuc" Type="Self.chuyenmuc" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tintuc" Type="Self.tintuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="chuyenmuc">
+              <PropertyRef Name="ma" />
+            </Principal>
+            <Dependent Role="tintuc">
+              <PropertyRef Name="macm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLBH123ModelStoreContainer">
+          <EntitySet Name="cauhinh" EntityType="Self.cauhinh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chitietdh" EntityType="Self.chitietdh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chuyenmuc" EntityType="Self.chuyenmuc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="donhang" EntityType="Self.donhang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="khachhang" EntityType="Self.khachhang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="loaisp" EntityType="Self.loaisp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="nguoidung" EntityType="Self.nguoidung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sp" EntityType="Self.sp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tintuc" EntityType="Self.tintuc" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_chitietdh_donhang" Association="Self.FK_chitietdh_donhang">
+            <End Role="donhang" EntitySet="donhang" />
+            <End Role="chitietdh" EntitySet="chitietdh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_chitietdh_sp" Association="Self.FK_chitietdh_sp">
+            <End Role="sp" EntitySet="sp" />
+            <End Role="chitietdh" EntitySet="chitietdh" />
+          </AssociationSet>
+          <AssociationSet Name="FK_donhang_khachhang" Association="Self.FK_donhang_khachhang">
+            <End Role="khachhang" EntitySet="khachhang" />
+            <End Role="donhang" EntitySet="donhang" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sp_loaisp" Association="Self.FK_sp_loaisp">
+            <End Role="loaisp" EntitySet="loaisp" />
+            <End Role="sp" EntitySet="sp" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tintuc_chuyenmuc" Association="Self.FK_tintuc_chuyenmuc">
+            <End Role="chuyenmuc" EntitySet="chuyenmuc" />
+            <End Role="tintuc" EntitySet="tintuc" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLBH123Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="cauhinh">
+          <Key>
+            <PropertyRef Name="ma" />
+          </Key>
+          <Property Name="ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ngaytao" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="chitietdh">
+          <Key>
+            <PropertyRef Name="madh" />
+            <PropertyRef Name="masp" />
+          </Key>
+          <Property Name="madh" Type="Int32" Nullable="false" />
+          <Property Name="masp" Type="Int32" Nullable="false" />
+          <Property Name="soluong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dongia" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="donhang" Relationship="Self.FK_chitietdh_donhang" FromRole="chitietdh" ToRole="donhang" />
+          <NavigationProperty Name="sp" Relationship="Self.FK_chitietdh_sp" FromRole="chitietdh" ToRole="sp" />
+        </EntityType>
+        <EntityType Name="chuyenmuc">
+          <Key>
+            <PropertyRef Name="ma" />
+          </Key>
+          <Property Name="ma" Type="Int32" Nullable="false" />
+          <Property Name="ten" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="mota" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="mact" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="tintucs" Relationship="Self.FK_tintuc_chuyenmuc" FromRole="chuyenmuc" ToRole="tintuc" />
+        </EntityType>
+        <EntityType Name="donhang">
+          <Key>
+            <PropertyRef Name="ma" />
+          </Key>
+          <Property Name="ma" Type="Int32" Nullable="false" />
+          <Property Name="makh" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ngaydat" Type="DateTime" Precision="0" />
+          <Property Name="ngaygiao" Type="DateTime" Precision="0" />
+          <Property Name="phigiao" Type="Decimal" Precision="10" Scale="0" />
+          <Property Name="tennguoinhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="diachi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dienthoai" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="trangthai" Type="Boolean" />
+          <NavigationProperty Name="chitietdhs" Relationship="Self.FK_chitietdh_donhang" FromRole="donhang" ToRole="chitietdh" />
+          <NavigationProperty Name="khachhang" Relationship="Self.FK_donhang_khachhang" FromRole="donhang" ToRole="khachhang" />
+        </EntityType>
+        <EntityType Name="khachhang">
+          <Key>
+            <PropertyRef Name="ma" />
+          </Key>
+          <Property Name="ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ten" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="diachi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="dienthoai" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="donhangs" Relationship="Self.FK_donhang_khachhang" FromRole="khachhang" ToRole="donhang" />
+        </EntityType>
+        <EntityType Name="loaisp">
+          <Key>
+            <PropertyRef Name="ma" />
+          </Key>
+          <Property Name="ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ten" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="sps" Relationship="Self.FK_sp_loaisp" FromRole="loaisp" ToRole="sp" />
+        </EntityType>
+        <EntityType Name="nguoidung">
+          <Key>
+            <PropertyRef Name="ma" />
+          </Key>
+          <Property Name="ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gioitinh" Type="Boolean" />
+          <Property Name="diachi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="dienthoai" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="tendangnhap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="matkhau" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="anh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="quyen" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sp">
+          <Key>
+            <PropertyRef Name="ma" />
+          </Key>
+          <Property Name="ma" Type="Int32" Nullable="false" />
+          <Property Name="ten" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="mota" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="maloai" Type="Int32" Nullable="false" />
+          <Property Name="anhnho" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="anh1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="anh2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="anh3" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="tskt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tieubieu" Type="Boolean" />
+          <Property Name="trangthai" Type="Boolean" />
+          <Property Name="xoa" Type="Boolean" />
+          <Property Name="hang" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="gia" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="khuyenmai" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ngaydang" Type="DateTime" Precision="0" />
+          <Property Name="dvt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="chitietdhs" Relationship="Self.FK_chitietdh_sp" FromRole="sp" ToRole="chitietdh" />
+          <NavigationProperty Name="loaisp" Relationship="Self.FK_sp_loaisp" FromRole="sp" ToRole="loaisp" />
+        </EntityType>
+        <EntityType Name="tintuc">
+          <Key>
+            <PropertyRef Name="ma" />
+          </Key>
+          <Property Name="ma" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tieude" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="macm" Type="Int32" Nullable="false" />
+          <Property Name="matangan" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="mota" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ngaydang" Type="DateTime" Precision="0" />
+          <Property Name="anh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="nguoidang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="tieubieu" Type="Boolean" />
+          <Property Name="loaitin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="chuyenmuc" Relationship="Self.FK_tintuc_chuyenmuc" FromRole="tintuc" ToRole="chuyenmuc" />
+        </EntityType>
+        <Association Name="FK_chitietdh_donhang">
+          <End Role="donhang" Type="Self.donhang" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="chitietdh" Type="Self.chitietdh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="donhang">
+              <PropertyRef Name="ma" />
+            </Principal>
+            <Dependent Role="chitietdh">
+              <PropertyRef Name="madh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_chitietdh_sp">
+          <End Role="sp" Type="Self.sp" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="chitietdh" Type="Self.chitietdh" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sp">
+              <PropertyRef Name="ma" />
+            </Principal>
+            <Dependent Role="chitietdh">
+              <PropertyRef Name="masp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tintuc_chuyenmuc">
+          <End Role="chuyenmuc" Type="Self.chuyenmuc" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tintuc" Type="Self.tintuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="chuyenmuc">
+              <PropertyRef Name="ma" />
+            </Principal>
+            <Dependent Role="tintuc">
+              <PropertyRef Name="macm" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_donhang_khachhang">
+          <End Role="khachhang" Type="Self.khachhang" Multiplicity="1" />
+          <End Role="donhang" Type="Self.donhang" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="khachhang">
+              <PropertyRef Name="ma" />
+            </Principal>
+            <Dependent Role="donhang">
+              <PropertyRef Name="makh" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_sp_loaisp">
+          <End Role="loaisp" Type="Self.loaisp" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="sp" Type="Self.sp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loaisp">
+              <PropertyRef Name="ma" />
+            </Principal>
+            <Dependent Role="sp">
+              <PropertyRef Name="maloai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLBH123Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cauhinhs" EntityType="Self.cauhinh" />
+          <EntitySet Name="chitietdhs" EntityType="Self.chitietdh" />
+          <EntitySet Name="chuyenmucs" EntityType="Self.chuyenmuc" />
+          <EntitySet Name="donhangs" EntityType="Self.donhang" />
+          <EntitySet Name="khachhangs" EntityType="Self.khachhang" />
+          <EntitySet Name="loaisps" EntityType="Self.loaisp" />
+          <EntitySet Name="nguoidungs" EntityType="Self.nguoidung" />
+          <EntitySet Name="sps" EntityType="Self.sp" />
+          <EntitySet Name="tintucs" EntityType="Self.tintuc" />
+          <AssociationSet Name="FK_chitietdh_donhang" Association="Self.FK_chitietdh_donhang">
+            <End Role="donhang" EntitySet="donhangs" />
+            <End Role="chitietdh" EntitySet="chitietdhs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_chitietdh_sp" Association="Self.FK_chitietdh_sp">
+            <End Role="sp" EntitySet="sps" />
+            <End Role="chitietdh" EntitySet="chitietdhs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tintuc_chuyenmuc" Association="Self.FK_tintuc_chuyenmuc">
+            <End Role="chuyenmuc" EntitySet="chuyenmucs" />
+            <End Role="tintuc" EntitySet="tintucs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_donhang_khachhang" Association="Self.FK_donhang_khachhang">
+            <End Role="khachhang" EntitySet="khachhangs" />
+            <End Role="donhang" EntitySet="donhangs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_sp_loaisp" Association="Self.FK_sp_loaisp">
+            <End Role="loaisp" EntitySet="loaisps" />
+            <End Role="sp" EntitySet="sps" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLBH123ModelStoreContainer" CdmEntityContainer="QLBH123Entities">
+          <EntitySetMapping Name="cauhinhs">
+            <EntityTypeMapping TypeName="QLBH123Model.cauhinh">
+              <MappingFragment StoreEntitySet="cauhinh">
+                <ScalarProperty Name="ma" ColumnName="ma" />
+                <ScalarProperty Name="noidung" ColumnName="noidung" />
+                <ScalarProperty Name="ngaytao" ColumnName="ngaytao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chitietdhs">
+            <EntityTypeMapping TypeName="QLBH123Model.chitietdh">
+              <MappingFragment StoreEntitySet="chitietdh">
+                <ScalarProperty Name="madh" ColumnName="madh" />
+                <ScalarProperty Name="masp" ColumnName="masp" />
+                <ScalarProperty Name="soluong" ColumnName="soluong" />
+                <ScalarProperty Name="dongia" ColumnName="dongia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chuyenmucs">
+            <EntityTypeMapping TypeName="QLBH123Model.chuyenmuc">
+              <MappingFragment StoreEntitySet="chuyenmuc">
+                <ScalarProperty Name="ma" ColumnName="ma" />
+                <ScalarProperty Name="ten" ColumnName="ten" />
+                <ScalarProperty Name="mota" ColumnName="mota" />
+                <ScalarProperty Name="mact" ColumnName="mact" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="donhangs">
+            <EntityTypeMapping TypeName="QLBH123Model.donhang">
+              <MappingFragment StoreEntitySet="donhang">
+                <ScalarProperty Name="ma" ColumnName="ma" />
+                <ScalarProperty Name="makh" ColumnName="makh" />
+                <ScalarProperty Name="ngaydat" ColumnName="ngaydat" />
+                <ScalarProperty Name="ngaygiao" ColumnName="ngaygiao" />
+                <ScalarProperty Name="phigiao" ColumnName="phigiao" />
+                <ScalarProperty Name="tennguoinhan" ColumnName="tennguoinhan" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="dienthoai" ColumnName="dienthoai" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="trangthai" ColumnName="trangthai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="khachhangs">
+            <EntityTypeMapping TypeName="QLBH123Model.khachhang">
+              <MappingFragment StoreEntitySet="khachhang">
+                <ScalarProperty Name="ma" ColumnName="ma" />
+                <ScalarProperty Name="ten" ColumnName="ten" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="dienthoai" ColumnName="dienthoai" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loaisps">
+            <EntityTypeMapping TypeName="QLBH123Model.loaisp">
+              <MappingFragment StoreEntitySet="loaisp">
+                <ScalarProperty Name="ma" ColumnName="ma" />
+                <ScalarProperty Name="ten" ColumnName="ten" />
+                <ScalarProperty Name="mota" ColumnName="mota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nguoidungs">
+            <EntityTypeMapping TypeName="QLBH123Model.nguoidung">
+              <MappingFragment StoreEntitySet="nguoidung">
+                <ScalarProperty Name="ma" ColumnName="ma" />
+                <ScalarProperty Name="ten" ColumnName="ten" />
+                <ScalarProperty Name="gioitinh" ColumnName="gioitinh" />
+                <ScalarProperty Name="diachi" ColumnName="diachi" />
+                <ScalarProperty Name="dienthoai" ColumnName="dienthoai" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="tendangnhap" ColumnName="tendangnhap" />
+                <ScalarProperty Name="matkhau" ColumnName="matkhau" />
+                <ScalarProperty Name="anh" ColumnName="anh" />
+                <ScalarProperty Name="quyen" ColumnName="quyen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sps">
+            <EntityTypeMapping TypeName="QLBH123Model.sp">
+              <MappingFragment StoreEntitySet="sp">
+                <ScalarProperty Name="ma" ColumnName="ma" />
+                <ScalarProperty Name="ten" ColumnName="ten" />
+                <ScalarProperty Name="mota" ColumnName="mota" />
+                <ScalarProperty Name="maloai" ColumnName="maloai" />
+                <ScalarProperty Name="anhnho" ColumnName="anhnho" />
+                <ScalarProperty Name="anh1" ColumnName="anh1" />
+                <ScalarProperty Name="anh2" ColumnName="anh2" />
+                <ScalarProperty Name="anh3" ColumnName="anh3" />
+                <ScalarProperty Name="tskt" ColumnName="tskt" />
+                <ScalarProperty Name="tieubieu" ColumnName="tieubieu" />
+                <ScalarProperty Name="trangthai" ColumnName="trangthai" />
+                <ScalarProperty Name="xoa" ColumnName="xoa" />
+                <ScalarProperty Name="hang" ColumnName="hang" />
+                <ScalarProperty Name="gia" ColumnName="gia" />
+                <ScalarProperty Name="khuyenmai" ColumnName="khuyenmai" />
+                <ScalarProperty Name="ngaydang" ColumnName="ngaydang" />
+                <ScalarProperty Name="dvt" ColumnName="dvt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tintucs">
+            <EntityTypeMapping TypeName="QLBH123Model.tintuc">
+              <MappingFragment StoreEntitySet="tintuc">
+                <ScalarProperty Name="ma" ColumnName="ma" />
+                <ScalarProperty Name="tieude" ColumnName="tieude" />
+                <ScalarProperty Name="macm" ColumnName="macm" />
+                <ScalarProperty Name="matangan" ColumnName="matangan" />
+                <ScalarProperty Name="mota" ColumnName="mota" />
+                <ScalarProperty Name="ngaydang" ColumnName="ngaydang" />
+                <ScalarProperty Name="anh" ColumnName="anh" />
+                <ScalarProperty Name="nguoidang" ColumnName="nguoidang" />
+                <ScalarProperty Name="tieubieu" ColumnName="tieubieu" />
+                <ScalarProperty Name="loaitin" ColumnName="loaitin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

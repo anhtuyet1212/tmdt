@@ -1,0 +1,57 @@
+﻿@model PagedList.IPagedList<tmdt.Models.chuyenmuc>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Timkiemchuyenmuc";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tìm kiếm chuyên mục</h2>
+<div>
+    <form class="form-inline" action="@Url.Action("Timkiemchuyenmuc","chuyenmucs")" method="post">
+        <div class="form-group">
+            <label for="exampleInputName2">Nhập thông tin</label>
+            <input type="text" class="form-control" name="keyword" id="exampleInputName2" placeholder="Nhập tên chuyên mục cần tìm">
+        </div>
+
+        <button style="margin-top:25px;" type="submit" class="btn btn-default">TÌM KIẾM</button>
+    </form>
+</div>
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>
+         Tên
+        </th>
+        <th>
+          Mô tả
+        </th>
+        @*<th>
+        Mã chuyên mục
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ten)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.mota)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.mact)
+        </td>*@
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ma }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ma }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ma })
+        </td>*@
+    </tr>
+}
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions() { HttpMethod = "Get", UpdateTargetId = "sp_area" }))

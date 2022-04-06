@@ -1,0 +1,40 @@
+﻿@model IEnumerable<tmdt.Models.sp>
+<div class="container">
+    <div class="row">
+        <div class="categories__slider owl-carousel">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3">
+                    <div class="categories__item set-bg" data-setbg="@item.anhnho">
+                        <h5><a href="@Url.Action("Chitiet","Sanpham",new { ma=@item.ma})">@item.ten</a></h5>
+                    </div>
+                </div>
+            }
+            @*<div class="col-lg-3">
+                <div class="categories__item set-bg" data-setbg="/LIB/img/categories/11prmax.jpg">
+                    <h5><a href="#">Iphone 11 Pro Max</a></h5>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="categories__item set-bg" data-setbg="/LIB/img/categories/m52.jpg">
+                    <h5><a href="#">SamSung M52</a></h5>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="categories__item set-bg" data-setbg="/LIB/img/categories/mi11.jpg">
+                    <h5><a href="#">Xiaomi Mi 11</a></h5>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="categories__item set-bg" data-setbg="/LIB/img/categories/LG.jpg">
+                    <h5><a href="#">LG WING 5G</a></h5>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="categories__item set-bg" data-setbg="/LIB/img/categories/arport2.jpg">
+                    <h5><a href="#">Tai Nghe Không dây</a></h5>
+                </div>
+            </div>*@
+        </div>
+    </div>
+</div>

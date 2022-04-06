@@ -1,0 +1,150 @@
+﻿@model tmdt.Models.sp
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CHI TIẾT SẢN PHẨM</h2>
+
+
+<div>
+    @*<h4>sp</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label class="control-label col-md-5">Tên sản phẩm</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ten)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-5">Mô tả</label>
+        </dt>
+
+        <dd>
+            @Html.Raw(Model.mota)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-5">Ảnh đại diện</label>
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.anhnho)*@
+            @*Hiện ảnh nhỏ*@
+            <img src="@Model.anhnho" width="200" height="200">
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-5">Ảnh 1</label>
+        </dt>
+
+        <dd>
+            <img src="@Model.anh1" width="200" height="200">
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-5">Ảnh 2</label>
+        </dt>
+
+        <dd>
+            <img src="@Model.anh2" width="200" height="200">
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-5">Ảnh 3</label>
+        </dt>
+
+        <dd>
+            <img src="@Model.anh3" width="200" height="200">
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-5">Thông số kỹ thuật</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tskt)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-5">Tiêu biểu</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tieubieu)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-5">Trạng thái</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trangthai)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-5">Xoá</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.xoa)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-5">Hãng</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hang)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-5">Giá</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gia)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-5">Khuyến mại</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.khuyenmai)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-5">Ngày đăng</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngaydang)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-5">Đơn vị tính</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dvt)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-5">Loại sản phẩm</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loaisp.ten)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Chỉnh sửa thông tin sản phẩm", "Edit", new { id = Model.ma }) |
+    @Html.ActionLink("Quay lại", "Index")
+</p>

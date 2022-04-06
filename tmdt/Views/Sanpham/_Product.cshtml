@@ -1,0 +1,176 @@
+﻿@using tmdt.Models;
+@{ 
+    var dsloai = (List<loaisp>)ViewBag.dsloai;
+    var dssp = (List<sp>)ViewBag.dssp;
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="section-title">
+                <h2>SẢN PHẨM NỔI BẬT</h2>
+            </div>
+            <div class="featured__controls">
+                <ul>
+                    <li class="active" data-filter="*">Tất cả</li>
+                    @foreach (var item in dsloai)
+                    {
+                        <li data-filter=".@item.ma">@item.ten</li>
+                    }
+       
+                    @*<li data-filter=".fresh-meat">PHỤ KIỆN</li>
+                    <li data-filter=".vegetables">TAI NGHE</li>
+                    <li data-filter=".fastfood">THẺ SIM</li>*@
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row featured__filter">
+        @foreach (var item in dsloai)
+        {
+            foreach (var sp in dssp)
+            {
+                if (sp.maloai == item.ma)
+                {
+                    <div class="col-lg-3 col-md-4 col-sm-6 mix @item.ma">
+                        <div class="featured__item">
+
+                            <div class="featured__item__pic set-bg" data-setbg="@sp.anhnho">
+                                <ul class="featured__item__pic__hover">
+                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                    <li><a href="@Url.Action("ThemGioHang","Giohangs",new { ma=@sp.ma,soluong=1})"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="featured__item__text">
+                                <h6><a href="#">@sp.ten</a></h6>
+                                <h5>@Convert.ToDecimal( @sp.gia).ToString("##,#") VNĐ</h5>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+
+        @*<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+            <div class="featured__item">
+
+                <div class="featured__item__pic set-bg" data-setbg="/LIB/img/featured/LG.jpg">
+                    <ul class="featured__item__pic__hover">
+                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                    </ul>
+                </div>
+                <div class="featured__item__text">
+                    <h6><a href="#">LG Wing 5G</a></h6>
+                    <h5>29.990.000 VNĐ</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood">
+            <div class="featured__item">
+                <div class="featured__item__pic set-bg" data-setbg="/LIB/img/featured/note10.jpg">
+                    <ul class="featured__item__pic__hover">
+                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                    </ul>
+                </div>
+                <div class="featured__item__text">
+                    <h6><a href="#">Galaxy Note 10 Plus</a></h6>
+                    <h5>11.900.000 VNĐ</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fresh-meat">
+            <div class="featured__item">
+                <div class="featured__item__pic set-bg" data-setbg="/LIB/img/featured/mi9t.jpg">
+                    <ul class="featured__item__pic__hover">
+                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                    </ul>
+                </div>
+                <div class="featured__item__text">
+                    <h6><a href="#">Xiaomi Mi 9T</a></h6>
+                    <h5>9.500.000 VNĐ</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood oranges">
+            <div class="featured__item">
+                <div class="featured__item__pic set-bg" data-setbg="/LIB/img/featured/11promax.jpg">
+                    <ul class="featured__item__pic__hover">
+                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                    </ul>
+                </div>
+                <div class="featured__item__text">
+                    <h6><a href="#">Iphone 11 Pro Max</a></h6>
+                    <h5>29.000.000 VNĐ</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
+            <div class="featured__item">
+                <div class="featured__item__pic set-bg" data-setbg="/LIB/img/featured/m31.jpg">
+                    <ul class="featured__item__pic__hover">
+                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                    </ul>
+                </div>
+                <div class="featured__item__text">
+                    <h6><a href="#">Samsung M31</a></h6>
+                    <h5>9.900.000 VNĐ</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fastfood">
+            <div class="featured__item">
+                <div class="featured__item__pic set-bg" data-setbg="/LIB/img/featured/SIM.jpg">
+                    <ul class="featured__item__pic__hover">
+                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                    </ul>
+                </div>
+                <div class="featured__item__text">
+                    <h6><a href="#">SIM các nhà mạng</a></h6>
+                    <h5>99.000 VNĐ</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
+            <div class="featured__item">
+                <div class="featured__item__pic set-bg" data-setbg="/LIB/img/featured/kanenk6.jpg">
+                    <ul class="featured__item__pic__hover">
+                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                    </ul>
+                </div>
+                <div class="featured__item__text">
+                    <h6><a href="#">Tai Nghe Không Dây</a></h6>
+                    <h5>850.000 VNĐ</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood vegetables">
+            <div class="featured__item">
+                <div class="featured__item__pic set-bg" data-setbg="/LIB/img/featured/thecao.jpg">
+                    <ul class="featured__item__pic__hover">
+                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                    </ul>
+                </div>
+                <div class="featured__item__text">
+                    <h6><a href="#">Vitel Vinaphone Mobifone Vietnamobile </a></h6>
+                    <h5>Tất cả các mệnh giá</h5>
+                </div>
+            </div>
+        </div>*@
+    </div>
+</div>

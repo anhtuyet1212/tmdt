@@ -1,0 +1,36 @@
+﻿@model tmdt.Models.loaisp
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Chi tiết loại sản phẩm</h2>
+
+<div>
+    @*<h4>loaisp</h4>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <label class="control-label col-md-5">Tên</label>
+            @*@Html.DisplayNameFor(model => model.ten)*@
+        </dt>
+
+        <dd>
+            
+            @Html.DisplayFor(model => model.ten)
+        </dd>
+
+        <dt>
+            <label class="control-label col-md-5">Mô tả</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mota)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.ma }) |
+    @Html.ActionLink("Quay lại", "Index")
+</p>
