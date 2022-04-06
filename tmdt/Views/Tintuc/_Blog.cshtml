@@ -19,15 +19,15 @@
                 <div class="col-lg-4 col-md-4 col-sm-6 @item.tieude">
                     <div class="blog__item">
                         <div class="blog__item__pic icon">
-                            <img src="@item.anh" alt="">
+                            <img src="@item.anh" alt="" width="100%" height="300px">
                         </div>
                         <div class="blog__item__text">
                             <ul>
                                 <li><i class="fa fa-calendar-o"></i> @item.ngaydang</li>
                                 <li><i class="fa fa-comment-o"></i> 5</li>
                             </ul>
-                            <h5><a href="@Url.Action("_Chitiettintuc", "Tintuc",new { ma=item.ma})">@item.matangan</a></h5>
-                            <p>@Html.Raw(item.mota) </p>
+                            <h5><a class="three-line" href="@Url.Action("_Chitiettintuc", "Tintuc",new { ma=item.ma})">@item.tieude</a></h5>
+                            <p class="three-line">@item.matangan</p>
                         </div>
                     </div>
                 </div>
@@ -36,3 +36,15 @@
         }      
     </div>
 </div>
+<style>
+    .three-line {
+        width: auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 25px;
+        -webkit-line-clamp: 3;
+        height: auto;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+</style>

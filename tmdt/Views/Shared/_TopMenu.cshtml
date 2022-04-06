@@ -40,7 +40,7 @@
                     List<GioHang> dsgh = (List<GioHang>)Session["dsgh"];
                 }
                 <ul>
-                    <li><a href="#"><i class="fa fa-heart"></i> <span>99</span></a></li>
+              
                     @if (dsgh != null)
                     {
                         <li><a href="@Url.Action("XemGioHang","GioHangs")"><i class="fa fa-shopping-bag"></i> <span>@dsgh.Count</span></a></li>

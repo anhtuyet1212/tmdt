@@ -1,5 +1,5 @@
 ﻿@using tmdt.Models;
-@{ 
+@{
     var dsloai = (List<loaisp>)ViewBag.dsloai;
     var dssp = (List<sp>)ViewBag.dssp;
 }
@@ -9,168 +9,201 @@
             <div class="section-title">
                 <h2>SẢN PHẨM NỔI BẬT</h2>
             </div>
-            <div class="featured__controls">
-                <ul>
-                    <li class="active" data-filter="*">Tất cả</li>
-                    @foreach (var item in dsloai)
+            <div class="tab">
+                @foreach (var item in dsloai)
+                {
+                    <button class="tablinks" onclick="openCity(event, @item.ma)">@item.ten</button>
+                }
+            </div>
+        </div>
+    </div>
+
+    @foreach (var item in dsloai)
+    {
+        <div id="@item.ma" class="tabcontent">
+            <div class="row">
+                @foreach (var sp in dssp)
+                {
+                    if (sp.maloai == item.ma)
                     {
-                        <li data-filter=".@item.ma">@item.ten</li>
+                <div class="col-md-3">
+                    @*<img src="@sp.anhnho" width="100%" height="300px" />
+        <div class="featured__item__text">
+            <h6><a href="/Sanpham/Chitiet?ma=@sp.ma">@sp.ten</a></h6>
+            <h5>@Convert.ToDecimal(@sp.gia).ToString("##,#") VNĐ</h5>
+        </div>*@
+                    <div class="containersub">
+                        <img class="hov" src="@sp.anhnho" alt="" style="width:100%;height:300px" />
+                        <p class="titlesub"></p>
+                        <div class="overlay"></div>
+                        <div class="buttonsub"><a href="@Url.Action("ThemGioHang","Giohangs",new { ma=@sp.ma,soluong=1})"> <i class="fa fa-shopping-cart"></i> </a></div>
+                    </div>
+                    <div class="featured__item__text">
+                        <h6><a href="/Sanpham/Chitiet?ma=@sp.ma">@sp.ten</a></h6>
+                        <h5>@Convert.ToDecimal(@sp.gia).ToString("##,#") VNĐ</h5>
+                    </div>
+                </div>
+                       
                     }
-       
-                    @*<li data-filter=".fresh-meat">PHỤ KIỆN</li>
-                    <li data-filter=".vegetables">TAI NGHE</li>
-                    <li data-filter=".fastfood">THẺ SIM</li>*@
+
+                }
+            </div>
+        </div>
+    }
+</div>
+@*<div class="col-lg-3 col-md-4 col-sm-6 mix @item.ma">
+        <div class="featured__item">
+
+            <div class="featured__item__pic set-bg" data-setbg="@sp.anhnho">
+                <ul class="featured__item__pic__hover">
+                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                    <li><a href="@Url.Action("ThemGioHang","Giohangs",new { ma=@sp.ma,soluong=1})"><i class="fa fa-shopping-cart"></i></a></li>
                 </ul>
             </div>
+            <div class="featured__item__text">
+                <h6><a href="#">@sp.ten</a></h6>
+                <h5>@Convert.ToDecimal(@sp.gia).ToString("##,#") VNĐ</h5>
+            </div>
         </div>
-    </div>
-    <div class="row featured__filter">
-        @foreach (var item in dsloai)
-        {
-            foreach (var sp in dssp)
-            {
-                if (sp.maloai == item.ma)
-                {
-                    <div class="col-lg-3 col-md-4 col-sm-6 mix @item.ma">
-                        <div class="featured__item">
+    </div>*@
+<script>
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+<style>
+    .containersub {
+        position: relative;
+        width: 100%;
+        height: 300px;
+    }
 
-                            <div class="featured__item__pic set-bg" data-setbg="@sp.anhnho">
-                                <ul class="featured__item__pic__hover">
-                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                    <li><a href="@Url.Action("ThemGioHang","Giohangs",new { ma=@sp.ma,soluong=1})"><i class="fa fa-shopping-cart"></i></a></li>
-                                </ul>
-                            </div>
-                            <div class="featured__item__text">
-                                <h6><a href="#">@sp.ten</a></h6>
-                                <h5>@Convert.ToDecimal( @sp.gia).ToString("##,#") VNĐ</h5>
-                            </div>
-                        </div>
-                    </div>
-                }
-            }
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0);
+        transition: background 0.5s ease;
+    }
+
+    .containersub:hover .overlay {
+        display: block;
+        background: rgba(0, 0, 0, .3);
+    }
+
+    img .hov {
+        position: absolute;
+        width: 100%;
+        height: 300px;
+        left: 0;
+    }
+
+    .titlesub {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 120px;
+        font-weight: 700;
+        font-size: 30px;
+        text-align: center;
+        text-transform: uppercase;
+        color: white;
+        z-index: 1;
+        transition: top .5s ease;
+    }
+
+    .containersub:hover .titlesub {
+        top: 90px;
+    }
+
+    .buttonsub {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: 230px;
+        text-align: center;
+        opacity: 0;
+        transition: opacity .35s ease;
+    }
+
+        .buttonsub a {
+            width: 200px;
+            padding: 12px 48px;
+            text-align: center;
+            color: white;
+            border: solid 2px white;
+            z-index: 1;
         }
 
-        @*<div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-            <div class="featured__item">
+    .containersub:hover .buttonsub {
+        opacity: 1;
+    }
 
-                <div class="featured__item__pic set-bg" data-setbg="/LIB/img/featured/LG.jpg">
-                    <ul class="featured__item__pic__hover">
-                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                    </ul>
-                </div>
-                <div class="featured__item__text">
-                    <h6><a href="#">LG Wing 5G</a></h6>
-                    <h5>29.990.000 VNĐ</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood">
-            <div class="featured__item">
-                <div class="featured__item__pic set-bg" data-setbg="/LIB/img/featured/note10.jpg">
-                    <ul class="featured__item__pic__hover">
-                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                    </ul>
-                </div>
-                <div class="featured__item__text">
-                    <h6><a href="#">Galaxy Note 10 Plus</a></h6>
-                    <h5>11.900.000 VNĐ</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fresh-meat">
-            <div class="featured__item">
-                <div class="featured__item__pic set-bg" data-setbg="/LIB/img/featured/mi9t.jpg">
-                    <ul class="featured__item__pic__hover">
-                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                    </ul>
-                </div>
-                <div class="featured__item__text">
-                    <h6><a href="#">Xiaomi Mi 9T</a></h6>
-                    <h5>9.500.000 VNĐ</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood oranges">
-            <div class="featured__item">
-                <div class="featured__item__pic set-bg" data-setbg="/LIB/img/featured/11promax.jpg">
-                    <ul class="featured__item__pic__hover">
-                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                    </ul>
-                </div>
-                <div class="featured__item__text">
-                    <h6><a href="#">Iphone 11 Pro Max</a></h6>
-                    <h5>29.000.000 VNĐ</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
-            <div class="featured__item">
-                <div class="featured__item__pic set-bg" data-setbg="/LIB/img/featured/m31.jpg">
-                    <ul class="featured__item__pic__hover">
-                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                    </ul>
-                </div>
-                <div class="featured__item__text">
-                    <h6><a href="#">Samsung M31</a></h6>
-                    <h5>9.900.000 VNĐ</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fastfood">
-            <div class="featured__item">
-                <div class="featured__item__pic set-bg" data-setbg="/LIB/img/featured/SIM.jpg">
-                    <ul class="featured__item__pic__hover">
-                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                    </ul>
-                </div>
-                <div class="featured__item__text">
-                    <h6><a href="#">SIM các nhà mạng</a></h6>
-                    <h5>99.000 VNĐ</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
-            <div class="featured__item">
-                <div class="featured__item__pic set-bg" data-setbg="/LIB/img/featured/kanenk6.jpg">
-                    <ul class="featured__item__pic__hover">
-                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                    </ul>
-                </div>
-                <div class="featured__item__text">
-                    <h6><a href="#">Tai Nghe Không Dây</a></h6>
-                    <h5>850.000 VNĐ</h5>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood vegetables">
-            <div class="featured__item">
-                <div class="featured__item__pic set-bg" data-setbg="/LIB/img/featured/thecao.jpg">
-                    <ul class="featured__item__pic__hover">
-                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                    </ul>
-                </div>
-                <div class="featured__item__text">
-                    <h6><a href="#">Vitel Vinaphone Mobifone Vietnamobile </a></h6>
-                    <h5>Tất cả các mệnh giá</h5>
-                </div>
-            </div>
-        </div>*@
-    </div>
-</div>
+    .tab {
+        overflow: hidden;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+    }
+
+        /* Style the buttons that are used to open the tab content */
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+
+            /* Change background color of buttons on hover */
+            .tab button:hover {
+                background-color: #ddd;
+            }
+
+            /* Create an active/current tablink class */
+            .tab button.active {
+                background-color: #ccc;
+            }
+
+    /* Style the tab content */
+    .tabcontent {
+        display: none;
+        padding: 6px 12px;
+        border: 1px solid #ccc;
+        border-top: none;
+    }
+
+    @@-webkit-keyframes fadeEffect {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @@keyframes fadeEffect {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+</style>
