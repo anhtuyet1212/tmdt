@@ -162,6 +162,7 @@ namespace tmdt.Controllers
 
 
             }
+            Session[dsgh] = null;
             return Redirect("/hoanthanh");
         }
         public ActionResult Sucess()
