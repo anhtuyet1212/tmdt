@@ -143,12 +143,13 @@ namespace tmdt.Controllers
         [HttpPost]
         public ActionResult Payment(string shipname,string mobile,string address,string mail)
         {
+            khachhang kh = (khachhang)Session["kh"];
             var order = new donhang();
             order.ngaydat = DateTime.Now;
-            order.tennguoinhan = shipname;
-            order.dienthoai = mobile;
-            order.diachi = address;
-            order.email = mail;
+            order.tennguoinhan = kh.ten;
+            order.dienthoai = kh.dienthoai;
+            order.diachi = kh.diachi;
+            order.email = kh.email;
 
             var ma = new orderdao().Insert(order);
             var cart = (List<GioHang>)Session[dsgh];

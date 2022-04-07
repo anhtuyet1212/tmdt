@@ -221,6 +221,7 @@
     <Compile Include="Controllers\Banner2Controller.cs" />
     <Compile Include="Controllers\GioHangsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\khachhangsController.cs" />
     <Compile Include="Controllers\lienhe001Controller.cs" />
     <Compile Include="Controllers\lienheController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -1989,9 +1990,16 @@
     <Content Include="Views\lienhe001\guitinnhan.cshtml" />
     <Content Include="Views\TimkiemSP\search.cshtml" />
     <Content Include="Views\TimkiemSP\_Producttk.cshtml" />
+    <Content Include="Views\khachhangs\Create.cshtml" />
+    <Content Include="Views\khachhangs\Delete.cshtml" />
+    <Content Include="Views\khachhangs\Details.cshtml" />
+    <Content Include="Views\khachhangs\Edit.cshtml" />
+    <Content Include="Views\khachhangs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\admin\Content\flash\" />
+    <Folder Include="Areas\admin\Content\images\" />
     <Folder Include="Areas\admin\Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,6 @@
-﻿<div class="container">
+﻿@model tmdt.Models.khachhang
+@using tmdt.Models;
+<div class="container">
     <div class="row">
         <div class="col-lg-6 col-md-6">
             <div class="header__top__left">
@@ -26,9 +28,175 @@
                     </ul>
                 </div>
                 <div class="header__top__right__auth">
-                    <a href="/admin"><i class="fa fa-user"></i> Đăng nhập</a>
+
+                    @{
+                        khachhang kh = (khachhang)Session["kh"];
+                        if (kh == null)
+                        {
+                            <a href="#" data-target="#login" data-toggle="modal"><i class="fa fa-user"></i> Đăng nhập</a>
+                        }
+                        else
+                        {
+                            <a href="#"><i class="fa fa-user"></i> @kh.ten</a>
+                        }
+                    }
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!--Trigger-->
+
+<div id="login" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+            <div class="modal-body">
+                <button data-dismiss="modal" class="close">&times;</button>
+                <h4>Login</h4>
+                <form action="@Url.Action("Login","khachhangs")" method="post">
+                    <input type="text" name="email" class="username form-control" placeholder="Username" />
+                    <input type="password" name="password" class="password form-control" placeholder="password" />
+                    <input class="btn login" type="submit" value="Login" />
+                </form>
+                <a href="#" data-target="#dangki" class="btn login" data-toggle="modal"><i class="fa fa-user"></i> Đăng kí</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="dangki" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button data-dismiss="modal" class="close">&times;</button>
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                        <h4>Đăng kí</h4>
+                        <hr />
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            Tên
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.ten, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ten, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            Địa chỉ
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.diachi, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.diachi, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            Điện Thoại
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.dienthoai, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.dienthoai, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            Email
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            Password
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Đăng kí" class="btn login" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .login-trigger {
+        font-weight: bold;
+        color: #fff;
+        background: linear-gradient(to bottom right, #B05574, #F87E7B);
+        padding: 15px 30px;
+        border-radius: 30px;
+        position: relative;
+        top: 50%;
+    }
+
+    /*Modal*/
+    h4 {
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .close {
+        color: #fff;
+        transform: scale(1.2)
+    }
+
+    .modal-content {
+        font-weight: bold;
+        background: linear-gradient(to bottom right,#F87E7B,#B05574);
+    }
+
+    .form-control {
+        margin: 1em 0;
+    }
+
+        .form-control:hover, .form-control:focus {
+            box-shadow: none;
+            border-color: #fff;
+        }
+
+    .username, .password {
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        border-bottom: 2px solid #eee;
+        padding-left: 0;
+        font-weight: normal;
+        background: transparent;
+    }
+
+    .form-control::-webkit-input-placeholder {
+        color: #eee;
+    }
+
+    .form-control:focus::-webkit-input-placeholder {
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .login {
+        padding: 6px 20px;
+        border-radius: 20px;
+        background: none;
+        border: 2px solid #FAB87F;
+        color: #FAB87F;
+        font-weight: bold;
+        transition: all .5s;
+        margin-top: 1em;
+    }
+
+        .login:hover {
+            background: #FAB87F;
+            color: #fff;
+        }
+</style>

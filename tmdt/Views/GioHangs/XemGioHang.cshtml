@@ -110,7 +110,18 @@
                         <li>Tổng tiền <span>@Convert.ToDecimal(tongtien).ToString("##,#") VNĐ</span></li>
                         <li>Tổng cộng <span>@Convert.ToDecimal(tongtien).ToString("##,#")VNĐ </span></li>
                     </ul>
-                    <a href="@Url.Action("Payment","GioHangs")" class="primary-btn">Thanh toán</a>
+                    @{
+                        khachhang kh = (khachhang)Session["kh"];
+                        if (kh == null)
+                        {
+                            <a href="#" data-target="#login" data-toggle="modal" class="primary-btn">Đăng nhập để thanh toán</a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Payment","GioHangs")" class="primary-btn">Thanh toán</a>
+                        }
+                    }
+
                 </div>
             </div>
         </div>

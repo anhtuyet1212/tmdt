@@ -9,7 +9,7 @@
             <div class="section-title">
                 <h2>SẢN PHẨM NỔI BẬT</h2>
             </div>
-            <div class="tab">
+            <div class="tab" style="display: flex; justify-content: space-between;">
                 @foreach (var item in dsloai)
                 {
                     <button class="tablinks" onclick="openCity(event, @item.ma)">@item.ten</button>
