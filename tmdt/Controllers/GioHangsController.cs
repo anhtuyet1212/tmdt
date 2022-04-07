@@ -159,14 +159,13 @@ namespace tmdt.Controllers
                 ctdhtt.masp = item.Spham.ma;
                 ctdhtt.madh = item.Spham.ma;
                 ctdhtt.dongia = item.SoLuong;
-
-
             }
             Session[dsgh] = null;
             return Redirect("/hoanthanh");
         }
         public ActionResult Sucess()
         {
+            Session[dsgh] = null;
             return View();
         }
         public ActionResult dathanhtoan()
