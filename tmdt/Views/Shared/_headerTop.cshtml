@@ -1,5 +1,4 @@
-﻿@model tmdt.Models.khachhang
-@using tmdt.Models;
+﻿@using tmdt.Models;
 <div class="container">
     <div class="row">
         <div class="col-lg-6 col-md-6">
@@ -65,7 +64,7 @@
     </div>
 </div>
 
-<div id="dangki" class="modal fade" role="dialog">
+@*<div id="dangki" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
@@ -82,7 +81,6 @@
                             Tên
                             <div class="col-md-10">
                                 @Html.EditorFor(model => model.ten, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.ten, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
@@ -90,7 +88,6 @@
                             Địa chỉ
                             <div class="col-md-10">
                                 @Html.EditorFor(model => model.diachi, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.diachi, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
@@ -98,7 +95,6 @@
                             Điện Thoại
                             <div class="col-md-10">
                                 @Html.EditorFor(model => model.dienthoai, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.dienthoai, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
@@ -106,7 +102,6 @@
                             Email
                             <div class="col-md-10">
                                 @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
@@ -114,7 +109,6 @@
                             Password
                             <div class="col-md-10">
                                 @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
@@ -128,7 +122,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 <style>
     .login-trigger {
         font-weight: bold;
