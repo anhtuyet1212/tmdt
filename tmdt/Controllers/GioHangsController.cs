@@ -145,11 +145,12 @@ namespace tmdt.Controllers
         {
             khachhang kh = (khachhang)Session["kh"];
             var order = new donhang();
+            order.makh = kh.ma;
             order.ngaydat = DateTime.Now;
-            order.tennguoinhan = kh.ten;
-            order.dienthoai = kh.dienthoai;
-            order.diachi = kh.diachi;
-            order.email = kh.email;
+            order.tennguoinhan = shipname;
+            order.dienthoai = mobile;
+            order.diachi = address;
+            order.email = mail;
 
             var ma = new orderdao().Insert(order);
             var cart = (List<GioHang>)Session[dsgh];
@@ -157,11 +158,14 @@ namespace tmdt.Controllers
             {
                 var ctdhtt = new chitietdh();
                 ctdhtt.masp = item.Spham.ma;
-                ctdhtt.madh = item.Spham.ma;
-                ctdhtt.dongia = item.SoLuong;
+                ctdhtt.madh = ma;
+                ctdhtt.soluong = item.SoLuong;
+                ctdhtt.dongia = item.Spham.gia;
+                db.chitietdhs.Add(ctdhtt);
+                db.SaveChanges();
             }
             Session[dsgh] = null;
-            return Redirect("/hoanthanh");
+            return RedirectToAction("Sucess");
         }
         public ActionResult Sucess()
         {

@@ -20,12 +20,12 @@ namespace tmdt.Controllers
         {
             ViewBag.dsloai = db.loaisps.ToList();
             ViewBag.dssp = db.sps.ToList();
-            return View();
+            
             if (page == null)
             {
                 page = 1;
             }
-            int pageSize = 7;
+            int pageSize = 5;
             int pageNumber = page ?? 1;
             return View(db.sps.OrderByDescending(s => s.ma).ToPagedList(pageNumber, pageSize));
         }
@@ -37,7 +37,7 @@ namespace tmdt.Controllers
             {
                 page = 1;
             }
-            int pageSize = 7;
+            int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(dssp.OrderByDescending(s => s.ma).ToPagedList(pageNumber, pageSize));
         }

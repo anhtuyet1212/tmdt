@@ -1,0 +1,76 @@
+﻿@model IEnumerable<tmdt.Models.donhang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách đơn hàng</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ngaydat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngaygiao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phigiao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tennguoinhan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.diachi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dienthoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.trangthai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.khachhang.ten)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngaydat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngaygiao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phigiao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tennguoinhan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.diachi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dienthoai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.trangthai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.khachhang.ten)
+        </td>
+        <td>
+           <a href="@Url.Action("Index", "chitietdhs", new { madh=item.ma }) "> Chi tiết</a>
+        </td>
+    </tr>
+}
+
+</table>

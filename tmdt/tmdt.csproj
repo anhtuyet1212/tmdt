@@ -210,8 +210,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
+    <Compile Include="Areas\admin\Controllers\chitietdhsController.cs" />
     <Compile Include="Areas\admin\Controllers\chuyenmucsController.cs" />
     <Compile Include="Areas\admin\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\admin\Controllers\donhangsController.cs" />
     <Compile Include="Areas\admin\Controllers\khachhangs1Controller.cs" />
     <Compile Include="Areas\admin\Controllers\loaispsController.cs" />
     <Compile Include="Areas\admin\Controllers\nguoidungsController.cs" />
@@ -276,6 +278,9 @@
       <DependentUpon>QLBH.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\sp.cs">
+      <DependentUpon>QLBH.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>QLBH.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tintuc.cs">
@@ -1446,6 +1451,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Image\219986.png" />
     <Content Include="Image\a21s.jpg" />
     <Content Include="Image\background1.jpg" />
     <Content Include="Image\background4.jpg" />
@@ -1609,13 +1615,6 @@
     <Content Include="packages\EntityFramework.6.1.3\tools\EntityFramework.PowerShell.dll" />
     <Content Include="packages\EntityFramework.6.1.3\tools\EntityFramework.PowerShell.Utility.dll" />
     <Content Include="packages\EntityFramework.6.1.3\tools\migrate.exe" />
-    <EntityDeploy Include="Models\QLBH.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QLBH.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\QLBH.edmx.diagram">
-      <DependentUpon>QLBH.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\admin\Views\khachhangs1\Create.cshtml" />
     <Content Include="Areas\admin\Views\khachhangs1\Delete.cshtml" />
     <Content Include="Areas\admin\Views\khachhangs1\Details.cshtml" />
@@ -1626,6 +1625,23 @@
     <Content Include="Areas\admin\Views\nguoidungs\Details.cshtml" />
     <Content Include="Areas\admin\Views\nguoidungs\Edit.cshtml" />
     <Content Include="Areas\admin\Views\nguoidungs\Index.cshtml" />
+    <EntityDeploy Include="Models\QLBH.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>QLBH.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\QLBH.edmx.diagram">
+      <DependentUpon>QLBH.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\admin\Views\donhangs\Create.cshtml" />
+    <Content Include="Areas\admin\Views\donhangs\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\donhangs\Details.cshtml" />
+    <Content Include="Areas\admin\Views\donhangs\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\donhangs\Index.cshtml" />
+    <Content Include="Areas\admin\Views\chitietdhs\Create.cshtml" />
+    <Content Include="Areas\admin\Views\chitietdhs\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\chitietdhs\Details.cshtml" />
+    <Content Include="Areas\admin\Views\chitietdhs\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\chitietdhs\Index.cshtml" />
     <None Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2.js" />
     <Content Include="packages\jQuery.1.10.2\Content\Scripts\jquery-1.10.2.min.js" />
@@ -1995,6 +2011,7 @@
     <Content Include="Views\khachhangs\Details.cshtml" />
     <Content Include="Views\khachhangs\Edit.cshtml" />
     <Content Include="Views\khachhangs\Index.cshtml" />
+    <Content Include="Views\Tintuc\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

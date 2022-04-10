@@ -20,6 +20,11 @@ namespace tmdt.Areas.admin.Controllers
         {
             return View();
         }
+        public ActionResult Logout()
+        {
+            Session["nd"] = null;
+            return RedirectToAction("Login");
+        }
         [HttpPost]
         public ActionResult Login(string txtTen,string txtMk)
         {

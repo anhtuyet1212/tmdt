@@ -33,6 +33,7 @@ namespace tmdt.Models
         public virtual DbSet<loaisp> loaisps { get; set; }
         public virtual DbSet<nguoidung> nguoidungs { get; set; }
         public virtual DbSet<sp> sps { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<tintuc> tintucs { get; set; }
     }
 }

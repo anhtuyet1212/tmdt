@@ -37,6 +37,7 @@
                         else
                         {
                             <a href="#"><i class="fa fa-user"></i> @kh.ten</a>
+                            <a href="@Url.Action("Logout","khachhangs")"><i class="fa fa-sign-out"></i> Đăng xuất</a>
                         }
                     }
                 </div>
@@ -58,7 +59,7 @@
                     <input type="password" name="password" class="password form-control" placeholder="password" />
                     <input class="btn login" type="submit" value="Login" />
                 </form>
-                <a href="#" data-target="#dangki" class="btn login" data-toggle="modal"><i class="fa fa-user"></i> Đăng kí</a>
+                @*<a href="#" data-target="#dangki" class="btn login" data-toggle="modal"><i class="fa fa-user"></i> Đăng kí</a>*@
             </div>
         </div>
     </div>

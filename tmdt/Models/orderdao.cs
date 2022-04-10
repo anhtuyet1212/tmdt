@@ -10,7 +10,7 @@ namespace tmdt.Models
     public class orderdao
     {
         csdlbh db = new csdlbh();
-        public long Insert(donhang order)
+        public int Insert(donhang order)
         {
             db.donhangs.Add(order);
             db.SaveChanges();

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="887152040bf74892ac7f77265a9edca5" Name="Diagram1">
+      <Diagram DiagramId="751419ef924f4693985b55029e0e4725" Name="Diagram1">
         <EntityTypeShape EntityType="QLBH123Model.cauhinh" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLBH123Model.chitietdh" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QLBH123Model.chuyenmuc" Width="1.5" PointX="5.75" PointY="6.5" IsExpanded="true" />
@@ -13,6 +13,7 @@
         <EntityTypeShape EntityType="QLBH123Model.loaisp" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QLBH123Model.nguoidung" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLBH123Model.sp" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLBH123Model.sysdiagram" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="QLBH123Model.tintuc" Width="1.5" PointX="8" PointY="6" IsExpanded="true" />
         <AssociationConnector Association="QLBH123Model.FK_chitietdh_donhang" ManuallyRouted="false" />
         <AssociationConnector Association="QLBH123Model.FK_chitietdh_sp" ManuallyRouted="false" />

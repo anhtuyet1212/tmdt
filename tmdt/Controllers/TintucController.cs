@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,9 +18,16 @@ namespace tmdt.Controllers
             ViewBag.tin = db.tintucs.Where(s => s.loaitin == tin.loaitin).Take(4).ToList();
             return View(tin);
         }
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View();
+            if (page == null)
+            {
+                page = 1;
+            }
+            int pageSize = 7;
+            int pageNumber = (page ?? 1);
+            var sps = db.tintucs.ToList();
+            return View(db.tintucs.OrderByDescending(s => s.tieude).ToPagedList(pageNumber, pageSize));
         }
         public PartialViewResult _Blog()
         {

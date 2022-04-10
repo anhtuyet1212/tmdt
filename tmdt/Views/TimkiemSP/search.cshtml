@@ -31,7 +31,7 @@
                 Đơn vị tính
             </th>
         </tr>
-        @foreach (var item in Model)
+        @foreach (var item in @Model)
         {
             <tr>
                 <td>
@@ -75,5 +75,5 @@
             
         }      
     </table>
-  @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions() { HttpMethod = "Get", UpdateTargetId = "sp_area" }))
+  @Html.PagedListPager(Model, page => Url.Action("search", new { page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions() { HttpMethod = "Get", UpdateTargetId = "sp_area" }))
 

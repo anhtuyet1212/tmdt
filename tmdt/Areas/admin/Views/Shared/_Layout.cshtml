@@ -49,8 +49,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quản lý đơn hàng<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Danh sách đơn hàng mới</a></li>
-                            <li><a href="#">Danh sách đơn hàng đã duyệt</a></li>
+                            <li><a href="@Url.Action("Index","donhangs")">Danh sách đơn hàng </a></li>
                             <li class="divider"></li>
                              <li><a href="@Url.Action("Index","khachhangs1")">Danh sách khách hàng</a></li>
                             <li><a href="@Url.Action("Index","nguoidungs")">Người dùng</a></li>
@@ -81,13 +80,10 @@
 
                     }
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="@nd.anh" width="25" height="25" /><span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img  src="~/Image/219986.png" width="25" height="25" /><span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Thông tin user</a></li>
-                            <li><a href="#">Thay đổi mật khẩu</a></li>
-                            @*<li><a href="#">Something else here</a></li>*@
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Thoát</a></li>
+         
+                            <li><a href="@Url.Action("Logout","Default")">Thoát</a></li>
                         </ul>
                     </li>
                    

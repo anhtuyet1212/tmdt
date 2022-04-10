@@ -8,125 +8,118 @@ using System.Web;
 using System.Web.Mvc;
 using tmdt.Models;
 
-namespace tmdt.Controllers
+namespace tmdt.Areas.admin.Controllers
 {
-    public class khachhangsController : Controller
+    public class chitietdhsController : Controller
     {
         private csdlbh db = new csdlbh();
 
-        // GET: khachhangs
-        public ActionResult Login(string email,string password)
+        // GET: admin/chitietdhs
+        public ActionResult Index(int madh)
         {
-            var nd = db.khachhangs.Where(s => s.email.Equals(email) && s.password.Equals(password)).FirstOrDefault();
-            if (nd != null)
-            {
-                Session["kh"] = nd;
-                return Redirect(Request.UrlReferrer.ToString());
-            }
-            ViewBag.ms = "Tên đăng nhập hoặc mật khẩu sai";
-            return Redirect(Request.UrlReferrer.ToString());
-        }
-        public ActionResult Logout()
-        {
-            Session["kh"] = null;
-            return RedirectToAction("Index", "Home");
-        }
-        public ActionResult Index()
-        {
-            return View(db.khachhangs.ToList());
+            var chitietdhs = db.chitietdhs.Where(c => c.madh == madh).Include(c => c.donhang).Include(c => c.sp);
+            return View(chitietdhs.ToList());
         }
 
-        // GET: khachhangs/Details/5
+        // GET: admin/chitietdhs/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            khachhang khachhang = db.khachhangs.Find(id);
-            if (khachhang == null)
+            chitietdh chitietdh = db.chitietdhs.Find(id);
+            if (chitietdh == null)
             {
                 return HttpNotFound();
             }
-            return View(khachhang);
+            return View(chitietdh);
         }
 
-        // GET: khachhangs/Create
+        // GET: admin/chitietdhs/Create
         public ActionResult Create()
         {
+            ViewBag.madh = new SelectList(db.donhangs, "ma", "tennguoinhan");
+            ViewBag.masp = new SelectList(db.sps, "ma", "ten");
             return View();
         }
 
-        // POST: khachhangs/Create
+        // POST: admin/chitietdhs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ma,ten,diachi,dienthoai,email,password")] khachhang khachhang)
+        public ActionResult Create([Bind(Include = "madh,masp,soluong,dongia")] chitietdh chitietdh)
         {
             if (ModelState.IsValid)
             {
-                db.khachhangs.Add(khachhang);
+                db.chitietdhs.Add(chitietdh);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(khachhang);
+            ViewBag.madh = new SelectList(db.donhangs, "ma", "tennguoinhan", chitietdh.madh);
+            ViewBag.masp = new SelectList(db.sps, "ma", "ten", chitietdh.masp);
+            return View(chitietdh);
         }
 
-        // GET: khachhangs/Edit/5
+        // GET: admin/chitietdhs/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            khachhang khachhang = db.khachhangs.Find(id);
-            if (khachhang == null)
+            chitietdh chitietdh = db.chitietdhs.Find(id);
+            if (chitietdh == null)
             {
                 return HttpNotFound();
             }
-            return View(khachhang);
+            ViewBag.madh = new SelectList(db.donhangs, "ma", "tennguoinhan", chitietdh.madh);
+            ViewBag.masp = new SelectList(db.sps, "ma", "ten", chitietdh.masp);
+            return View(chitietdh);
         }
 
-        // POST: khachhangs/Edit/5
+        // POST: admin/chitietdhs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ma,ten,diachi,dienthoai,email,password")] khachhang khachhang)
+        public ActionResult Edit([Bind(Include = "madh,masp,soluong,dongia")] chitietdh chitietdh)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(khachhang).State = EntityState.Modified;
+                db.Entry(chitietdh).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(khachhang);
+            ViewBag.madh = new SelectList(db.donhangs, "ma", "tennguoinhan", chitietdh.madh);
+            ViewBag.masp = new SelectList(db.sps, "ma", "ten", chitietdh.masp);
+            return View(chitietdh);
         }
 
-        // GET: khachhangs/Delete/5
+        // GET: admin/chitietdhs/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            khachhang khachhang = db.khachhangs.Find(id);
-            if (khachhang == null)
+            chitietdh chitietdh = db.chitietdhs.Find(id);
+            if (chitietdh == null)
             {
                 return HttpNotFound();
             }
-            return View(khachhang);
+            return View(chitietdh);
         }
 
-        // POST: khachhangs/Delete/5
+        // POST: admin/chitietdhs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            khachhang khachhang = db.khachhangs.Find(id);
-            db.khachhangs.Remove(khachhang);
+            chitietdh chitietdh = db.chitietdhs.Find(id);
+            db.chitietdhs.Remove(chitietdh);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
